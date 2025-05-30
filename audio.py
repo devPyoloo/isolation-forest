@@ -7,7 +7,7 @@ import librosa
 import os
 
 # Load your machine audio file
-audio_path = os.path.abspath(r"C:\Users\goaic\Desktop\plot_fft\audio\machine_sound.wav")
+audio_path = os.path.abspath(r"C:\Users\goaic\Desktop\plot_fft\audio\machine_anomaly.wav")
 
 try:
     # Load audio file
@@ -50,7 +50,7 @@ def create_2d_features(signal, delay=10):
 X_2d = create_2d_features(y)
 
 # Train Isolation Forest model
-iso_forest = IsolationForest(n_estimators=150, contamination=0.02, random_state=42)
+iso_forest = IsolationForest(n_estimators=150, contamination=0.03, random_state=42)
 iso_forest.fit(X_2d)
 anomaly_pred = iso_forest.predict(X_2d)
 
